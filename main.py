@@ -12,6 +12,9 @@ def index():
 def get_tarefa():
   resposta = requests.get("https://quote-generator-api-six.vercel.app/api/quotes/?limit=1")
 
+  if resposta.status_code != 200:
+    return {}
+
   return jsonify(resposta.json())
 
 if __name__ == "__main__":
